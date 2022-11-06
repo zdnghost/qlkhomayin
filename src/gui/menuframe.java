@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import database.sever;
+import gui.chinhsua.manegerpanel;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -39,7 +40,6 @@ public class menuframe extends JFrame {
     }
     private homepanel main=new homepanel();
     private manegerpanel man=new manegerpanel();
-    private nhappanel nhap=new nhappanel();
 
     public menuframe(String user,boolean admin) throws SQLException {
         setResizable(false);
@@ -124,7 +124,6 @@ public class menuframe extends JFrame {
         
         JPanel menu3 = new JPanel();
         tab.addTab("New tab", null, menu3, null);
-        show(menu3,nhap);
         JLabel lblNewLabel_1 = new JLabel("menu3");
         menu3.add(lblNewLabel_1);
         

@@ -25,7 +25,7 @@ public class sever {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        gui.manegerpanel.key="";
+        gui.chinhsua.manegerpanel.key="";
     }
     public static void disconect() throws SQLException
     {
