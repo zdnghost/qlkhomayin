@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import database.sever;
 import gui.chinhsua.manegerpanel;
+import gui.quanlyphieu.quanlyphieupanel;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
+import javax.swing.border.LineBorder;
 
 public class menuframe extends JFrame {
 
@@ -26,10 +28,10 @@ public class menuframe extends JFrame {
     /**
      * Launch the application.
      */
-    public void show(JPanel a,JPanel b)
+    public static String user; 
+    public static void show(JPanel a,JPanel b)
     {
         a.setLocation(0, 0);
-        main.setLocation(0, 0);
         b.setLayout(null);
         b.setSize(1152,642);
         b.setVisible(true);
@@ -40,7 +42,7 @@ public class menuframe extends JFrame {
     }
     private homepanel main=new homepanel();
     private manegerpanel man=new manegerpanel();
-
+    private quanlyphieupanel phieu=new quanlyphieupanel();
     public menuframe(String user,boolean admin) throws SQLException {
         setResizable(false);
         setTitle("QLKMI");
@@ -77,11 +79,12 @@ public class menuframe extends JFrame {
         info.add(lbluser);
         //log out
         JLabel logout = new JLabel("Log out");
+        logout.setBorder(new LineBorder(new Color(0, 0, 0)));
         logout.setFont(new Font("Tahoma", Font.PLAIN, 11));
         logout.setHorizontalAlignment(SwingConstants.CENTER);
         logout.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
                 login log=new login();
                 log.setVisible(true);
                 try {
@@ -92,8 +95,8 @@ public class menuframe extends JFrame {
                 }
                 dispose();
             }
-        });
-        logout.setBounds(1169, 0, 59, 39);
+        }});
+        logout.setBounds(1169, 11, 59, 17);
         info.add(logout);
         
         //admin
@@ -118,16 +121,17 @@ public class menuframe extends JFrame {
         show(menu2,man);
         tab.addTab("New tab", null, menu2, null);
         
-        JLabel lblMenu = new JLabel("quan ly kho");
+        JLabel lblMenu = new JLabel("quản lý mặt hàng");
         lblMenu.setBounds(542, 5, 32, 14);
         menu2.add(lblMenu);
         
         JPanel menu3 = new JPanel();
         tab.addTab("New tab", null, menu3, null);
-        JLabel lblNewLabel_1 = new JLabel("menu3");
+        JLabel lblNewLabel_1 = new JLabel("Quản lý phiếu nhập xuất");
         menu3.add(lblNewLabel_1);
         
         JPanel bmenu = new JPanel();
+        show(menu3,phieu);
         bmenu.setBackground(Color.LIGHT_GRAY);
         bmenu.setBounds(0, 40, 108, 641);
         contentPane.add(bmenu);
@@ -145,7 +149,6 @@ public class menuframe extends JFrame {
         bmenu1.add(lblmenu1);
         
         JPanel bmenu2 = new JPanel();
-        
         bmenu2.setLayout(null);
         bmenu2.setBounds(0, 65, 143, 43);
         bmenu.add(bmenu2);
@@ -158,36 +161,36 @@ public class menuframe extends JFrame {
         
         bmenu1.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
                 tab.setSelectedIndex(0);
                 bmenu1.setBackground(Color.cyan);
                 bmenu2.setBackground(Color.white);
                 bmenu3.setBackground(Color.white);
             }
-        });
+        }});
         bmenu2.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
                 tab.setSelectedIndex(1);
                 bmenu2.setBackground(Color.cyan);
                 bmenu1.setBackground(Color.white);
                 bmenu3.setBackground(Color.white);
             }
-        });
+        }});
         bmenu3.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
                 tab.setSelectedIndex(2);
                 bmenu3.setBackground(Color.cyan);
                 bmenu2.setBackground(Color.white);
                 bmenu1.setBackground(Color.white);
             }
-        });
+        }});
         bmenu3.setLayout(null);
         bmenu3.setBounds(0, 119, 143, 43);
         bmenu.add(bmenu3);
         
-        JLabel lblmenu3 = new JLabel("Menu 3");
+        JLabel lblmenu3 = new JLabel("Quản lý phiếu");
         lblmenu3.setBounds(0, 0, 143, 43);
         bmenu3.add(lblmenu3);
     }

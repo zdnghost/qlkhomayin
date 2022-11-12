@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import database.sever;
+import moudel.user;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -65,16 +66,17 @@ public class login extends JDialog {
 	public boolean isadmin(String u)throws SQLException {
         String Sql="select * from USERDB";
         ResultSet rs=sever.getquery(Sql);
-        boolean c=false;
+        int c;
         while(rs.next())
         {
             if((rs.getString("USERNAME").trim().equals(u)))
             {
-                c=rs.getBoolean("ADMIN");
-                break;
+                if(rs.getInt("CHUCVU")==3)
+                break ;
+                else return true;
             }
         }
-        return c;
+        return false;
     }
 
 	/**
@@ -131,16 +133,19 @@ public class login extends JDialog {
         
 		login = new JLabel("login");
 		login.setOpaque(true);
+		login.setBackground(new Color(240, 248, 255));
 		login.addMouseListener(new MouseAdapter() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
 		        login.setBackground(new Color(220, 228, 235));
+		        user temp=new user();
 		        String username=txtUser.getText();
 		          String password=new String(txtPass.getPassword());
 		          try {
 		          if(check(username,password))
 		          {
 		          boolean admin=isadmin(username);
+		          menuframe.user=username;
 		          menuframe a=new menuframe(username,admin);
 		          a.setVisible(true);
 		          sever.disconect();
@@ -155,17 +160,13 @@ public class login extends JDialog {
 		          }
 		          
 		          
-		    }
-		    @Override
-		    public void mouseEntered(MouseEvent e) {
-		        login.setBackground(new Color(230, 238, 245));
-		    }
-		    @Override
-		    public void mouseExited(MouseEvent e) {
-		        login.setBackground(new Color(240, 248, 255));
-		    }
+		    }}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				login.setBackground(new Color(240, 248, 255));
+			}
 		});
-		login.setBackground(new Color(240, 248, 255));
+		
 		login.setHorizontalAlignment(SwingConstants.CENTER);
 		login.setBounds(351, 153, 74, 23);
 		contentPanel.add(login);

@@ -26,46 +26,46 @@ public class manegerpanel extends JPanel {
     /**
      * Create the panel.
      */
-    public static JTextField txtmasp;
-    public static JTextField txttensp;
-    public static JRadioButton rdbtVanphong;
-    public static JRadioButton rdbtCongnghiep;
-    public static JRadioButton rdbtlaser;
-    public static JRadioButton rdbttn;
-    public static JRadioButton rdbtuv;
-    public static JRadioButton rdbtphun;
-    public static JCheckBox ch_ribbon;
-    public static JCheckBox ch_nhuom;
-    public static JCheckBox ch_dac;
-    public static JCheckBox ch_bot;
-    public static JCheckBox ch_nuoc;
-    public static JCheckBox ch_dau;
-    public static JCheckBox ch_ivorny;
-    public static JCheckBox ch_ford;
-    public static JCheckBox ch_couche;
-    public static JCheckBox ch_bristol;
-    public static JCheckBox ch_duplex;
-    public static JCheckBox ch_decal;
-    public static JCheckBox ch_kraft;
-    public static JCheckBox ch_usba;
-    public static JCheckBox ch_usbb;
-    public static JCheckBox ch_lan;
-    public static JCheckBox ch_wireless;
-    public static JCheckBox ch_window;
-    public static JCheckBox ch_linux;
-    public static JCheckBox ch_ios;
-    public static JCheckBox ch_android;
+    static JTextField txtmasp;
+    static JTextField txttensp;
+    static JRadioButton rdbtVanphong;
+    static JRadioButton rdbtCongnghiep;
+    static JRadioButton rdbtlaser;
+    static JRadioButton rdbttn;
+    static JRadioButton rdbtuv;
+    static JRadioButton rdbtphun;
+    static JCheckBox ch_ribbon;
+    static JCheckBox ch_nhuom;
+    static JCheckBox ch_dac;
+    static JCheckBox ch_bot;
+    static JCheckBox ch_nuoc;
+    static JCheckBox ch_dau;
+    static JCheckBox ch_ivorny;
+    static JCheckBox ch_ford;
+    static JCheckBox ch_couche;
+    static JCheckBox ch_bristol;
+    static JCheckBox ch_duplex;
+    static JCheckBox ch_decal;
+    static JCheckBox ch_kraft;
+    static JCheckBox ch_usba;
+    static JCheckBox ch_usbb;
+    static JCheckBox ch_lan;
+    static JCheckBox ch_wireless;
+    static JCheckBox ch_window;
+    static JCheckBox ch_linux;
+    static JCheckBox ch_ios;
+    static JCheckBox ch_android;
 
-    public static DefaultTableModel model;
-    public static ButtonGroup rdbt_loai=new ButtonGroup();
-    public static ButtonGroup rdbt_pp=new ButtonGroup();
-    public static String key="";    
+    static DefaultTableModel model;
+    static ButtonGroup rdbt_loai=new ButtonGroup();
+    static ButtonGroup rdbt_pp=new ButtonGroup();
+    static String key="";    
     
-    public static JTable table=new JTable();
-    public static ArrayList<JCheckBox> bmuc=new ArrayList<JCheckBox>();
-    public static ArrayList<JCheckBox> bhdh=new ArrayList<JCheckBox>();
-    public static ArrayList<JCheckBox> bcong=new  ArrayList<JCheckBox>();
-    public static ArrayList<JCheckBox> bgiay=new ArrayList<JCheckBox>();
+    static JTable table=new JTable();
+    static ArrayList<JCheckBox> bmuc=new ArrayList<JCheckBox>();
+    static ArrayList<JCheckBox> bhdh=new ArrayList<JCheckBox>();
+    static ArrayList<JCheckBox> bcong=new  ArrayList<JCheckBox>();
+    static ArrayList<JCheckBox> bgiay=new ArrayList<JCheckBox>();
     public manegerpanel() throws SQLException {
         setLayout(null);
         JPanel themhang = new JPanel();
@@ -392,24 +392,24 @@ public class manegerpanel extends JPanel {
         themhang.add(lblgiay);
         
 
-        gui.chinhsua.manegercontrol.newtable();
+        manegercontrol.newtable();
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(10, 327, 1132, 303);
         themhang.add(scrollPane);
         //xu ly su kien click vao dong cua bang
         table.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                gui.chinhsua.manegercontrol.chonhang();
-        }});
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
+                manegercontrol.chonhang();
+        }}});
         scrollPane.setViewportView(table);
         
         JPanel add = new JPanel();
         add.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-             mayin a=gui.chinhsua.manegercontrol.setobject();
-             gui.chinhsua.manegercontrol.adddata(a);
+            public void mousePressed(MouseEvent e) {
+             mayin a=manegercontrol.setobject();
+             manegercontrol.adddata(a);
             }
         });
         add.setBounds(999, 214, 88, 23);
@@ -421,11 +421,10 @@ public class manegerpanel extends JPanel {
         JPanel delete = new JPanel();
         delete.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                mayin a=gui.chinhsua.manegercontrol.setobject();
-                gui.chinhsua.manegercontrol.deletedata(a);
-            }
-        });
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
+                mayin a=manegercontrol.setobject();
+                manegercontrol.deletedata(a);
+            }}});
         delete.setBounds(897, 214, 88, 23);
         themhang.add(delete);
         
@@ -435,13 +434,12 @@ public class manegerpanel extends JPanel {
         JPanel update = new JPanel();
         update.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                mayin a=gui.chinhsua.manegercontrol.setobject();
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
+                mayin a=manegercontrol.setobject();
                 if(key=="")
                     key=a.masp;
-                gui.chinhsua.manegercontrol.updatedata(a);
-            }
-        });
+                manegercontrol.updatedata(a);
+            }}});
         update.setBounds(799, 214, 88, 23);
         themhang.add(update);
         
@@ -451,10 +449,9 @@ public class manegerpanel extends JPanel {
         JPanel refrest = new JPanel();
         refrest.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-        });
+            public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
+            	manegercontrol.refresh();
+            }}});
         refrest.setBounds(701, 214, 88, 23);
         themhang.add(refrest);
         

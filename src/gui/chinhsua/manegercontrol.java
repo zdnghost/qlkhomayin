@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -78,144 +79,144 @@ public class manegercontrol {
             hdh4=1;
     }
     public static void chonhang() {
-        int i=gui.chinhsua.manegerpanel.table.getSelectedRow();
-        TableModel temp=gui.chinhsua.manegerpanel.table.getModel();
-        gui.chinhsua.manegerpanel.key=temp.getValueAt(i,0).toString().trim();
-        gui.chinhsua.manegerpanel.txtmasp.setText(gui.chinhsua.manegerpanel.key);
-        gui.chinhsua.manegerpanel.txttensp.setText(temp.getValueAt(i,1).toString());
+        int i=manegerpanel.table.getSelectedRow();
+        TableModel temp=manegerpanel.table.getModel();
+        manegerpanel.key=temp.getValueAt(i,0).toString().trim();
+        manegerpanel.txtmasp.setText(manegerpanel.key);
+        manegerpanel.txttensp.setText(temp.getValueAt(i,1).toString());
         //getdata loai
         if(temp.getValueAt(i,2).toString().equals("Công Nghiệp"))
         {
-            gui.chinhsua.manegerpanel.rdbtCongnghiep.setSelected(true);
+            manegerpanel.rdbtCongnghiep.setSelected(true);
         }
         else
         {
-            gui.chinhsua.manegerpanel.rdbtVanphong.setSelected(true);
+            manegerpanel.rdbtVanphong.setSelected(true);
         }
         //getdata ppin
         if(temp.getValueAt(i,3).toString().trim().equals("IN PHUN"))
-            gui.chinhsua.manegerpanel.rdbtphun.setSelected(true);
+            manegerpanel.rdbtphun.setSelected(true);
         if(temp.getValueAt(i,3).toString().trim().equals("IN LASER"))
-            gui.chinhsua.manegerpanel.rdbtlaser.setSelected(true);
+            manegerpanel.rdbtlaser.setSelected(true);
         if(temp.getValueAt(i,3).toString().trim().equals("IN TRUYỀN NHIỆT"))
-            gui.chinhsua.manegerpanel.rdbttn.setSelected(true);
+            manegerpanel.rdbttn.setSelected(true);
         if(temp.getValueAt(i,3).toString().trim().equals("IN UV"))
-            gui.chinhsua.manegerpanel.rdbtuv.setSelected(true);
+            manegerpanel.rdbtuv.setSelected(true);
         //check muc ribon
         if(temp.getValueAt(i, 4).toString().contains("RIBBON"))
-            gui.chinhsua.manegerpanel.ch_ribbon.setSelected(true);
+            manegerpanel.ch_ribbon.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_ribbon.setSelected(false);
+            manegerpanel.ch_ribbon.setSelected(false);
         //check muc nhuom
         if(temp.getValueAt(i, 4).toString().contains("NHUOM"))
-            gui.chinhsua.manegerpanel.ch_nhuom.setSelected(true);
+            manegerpanel.ch_nhuom.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_nhuom.setSelected(false);
+            manegerpanel.ch_nhuom.setSelected(false);
         //check muc nuoc
         if(temp.getValueAt(i, 4).toString().contains("NUOC"))
-            gui.chinhsua.manegerpanel.ch_nuoc.setSelected(true);
+            manegerpanel.ch_nuoc.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_nuoc.setSelected(false);
+            manegerpanel.ch_nuoc.setSelected(false);
         //check muc bot
         if(temp.getValueAt(i, 4).toString().contains("BOT"))
-            gui.chinhsua.manegerpanel.ch_bot.setSelected(true);
+            manegerpanel.ch_bot.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_bot.setSelected(false);
+            manegerpanel.ch_bot.setSelected(false);
         //check muc dau
         if(temp.getValueAt(i, 4).toString().contains("DAU"))
-            gui.chinhsua.manegerpanel.ch_dau.setSelected(true);
+            manegerpanel.ch_dau.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_dau.setSelected(false);
+            manegerpanel.ch_dau.setSelected(false);
         //check muc dac
         if(temp.getValueAt(i, 4).toString().contains("DAC"))
-            gui.chinhsua.manegerpanel.ch_dac.setSelected(true);
+            manegerpanel.ch_dac.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_dac.setSelected(false);
+            manegerpanel.ch_dac.setSelected(false);
         //check giay ford
         String giay=temp.getValueAt(i, 5).toString();
         if(giay.contains("FORD"))
-            gui.chinhsua.manegerpanel.ch_ford.setSelected(true);
+            manegerpanel.ch_ford.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_ford.setSelected(false);
+            manegerpanel.ch_ford.setSelected(false);
         //check giay couche
         if(giay.contains("COUCHE"))
-            gui.chinhsua.manegerpanel.ch_couche.setSelected(true);
+            manegerpanel.ch_couche.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_couche.setSelected(false);
+            manegerpanel.ch_couche.setSelected(false);
         //check giay bristol
         if(giay.contains("BRISTOL"))
-            gui.chinhsua.manegerpanel.ch_bristol.setSelected(true);
+            manegerpanel.ch_bristol.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_bristol.setSelected(false);
+            manegerpanel.ch_bristol.setSelected(false);
         //check giay duplex
         if(giay.contains("DUPLEX"))
-            gui.chinhsua.manegerpanel.ch_duplex.setSelected(true);
+            manegerpanel.ch_duplex.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_duplex.setSelected(false);
+            manegerpanel.ch_duplex.setSelected(false);
         //check giay decal
         if(giay.contains("DECAL"))
-            gui.chinhsua.manegerpanel.ch_decal.setSelected(true);
+            manegerpanel.ch_decal.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_decal.setSelected(false);
+            manegerpanel.ch_decal.setSelected(false);
         //check giay kraft
         if(giay.contains("KRAFT"))
-            gui.chinhsua.manegerpanel.ch_kraft.setSelected(true);
+            manegerpanel.ch_kraft.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_kraft.setSelected(false);
+            manegerpanel.ch_kraft.setSelected(false);
         //check giay ivorny
         if(giay.contains("IVORNY"))
-            gui.chinhsua.manegerpanel.ch_ivorny.setSelected(true);
+            manegerpanel.ch_ivorny.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_ivorny.setSelected(false);
+            manegerpanel.ch_ivorny.setSelected(false);
         //check ket noi usba
         String day=temp.getValueAt(i, 6).toString();
         if(day.contains("USBA"))
-            gui.chinhsua.manegerpanel.ch_usba.setSelected(true);
+            manegerpanel.ch_usba.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_usba.setSelected(false);
+            manegerpanel.ch_usba.setSelected(false);
         //check ket noi usbb
         
         if(day.contains("USBB"))
-            gui.chinhsua.manegerpanel.ch_usbb.setSelected(true);
+            manegerpanel.ch_usbb.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_usbb.setSelected(false);
+            manegerpanel.ch_usbb.setSelected(false);
         //check ket noi enternet
         if(day.contains("ENTERNET"))
         {
-            gui.chinhsua.manegerpanel.ch_lan.setSelected(true);
+            manegerpanel.ch_lan.setSelected(true);
         }
         else
-            gui.chinhsua.manegerpanel.ch_lan.setSelected(false);
+            manegerpanel.ch_lan.setSelected(false);
         //check ket noi khong day
         if(day.contains("WIRELESS"))
-            gui.chinhsua.manegerpanel.ch_wireless.setSelected(true);
+            manegerpanel.ch_wireless.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_wireless.setSelected(false);
+            manegerpanel.ch_wireless.setSelected(false);
         //check hdh window
         if(temp.getValueAt(i, 7).toString().contains("Windows"))
-            gui.chinhsua.manegerpanel.ch_window.setSelected(true);
+            manegerpanel.ch_window.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_window.setSelected(false);
+            manegerpanel.ch_window.setSelected(false);
         //check ket noi usbb 
         if(temp.getValueAt(i, 7).toString().contains("iOS"))
-            gui.chinhsua.manegerpanel.ch_ios.setSelected(true);
+            manegerpanel.ch_ios.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_ios.setSelected(false);
+            manegerpanel.ch_ios.setSelected(false);
         //check ket noi enternet
         if(temp.getValueAt(i, 7).toString().contains("Linux"))
-            gui.chinhsua.manegerpanel.ch_linux.setSelected(true);
+            manegerpanel.ch_linux.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_linux.setSelected(false);
+            manegerpanel.ch_linux.setSelected(false);
         //check ket noi khong day
         if(temp.getValueAt(i, 7).toString().contains("Android"))
-            gui.chinhsua.manegerpanel.ch_android.setSelected(true);
+            manegerpanel.ch_android.setSelected(true);
         else
-            gui.chinhsua.manegerpanel.ch_android.setSelected(false);
+            manegerpanel.ch_android.setSelected(false);
     }
     private static void newmodel()
     {
         
-        gui.chinhsua.manegerpanel.model=new DefaultTableModel(
+        manegerpanel.model=new DefaultTableModel(
                 new Object[][] {
                 },
                 new String[] {
@@ -236,7 +237,7 @@ public class manegercontrol {
         while(data.next())
         {
         a.datatoobject(data);
-        gui.chinhsua.manegerpanel.model.addRow(new Object[]
+        manegerpanel.model.addRow(new Object[]
         {a.masp,a.tensp,a.loaimayin,a.ppin,a.muc,a.giay,a.cong,a.tuongthich});
         }
       } catch (SQLException e) {
@@ -248,10 +249,10 @@ public class manegercontrol {
 
     public static mayin setobject()
     {
-        String masp=gui.chinhsua.manegerpanel.txtmasp.getText().trim();
-        String tensp=gui.chinhsua.manegerpanel.txttensp.getText().trim();
+        String masp=manegerpanel.txtmasp.getText().trim();
+        String tensp=manegerpanel.txttensp.getText().trim();
         String loai="";
-        Enumeration<AbstractButton> eloai=gui.chinhsua.manegerpanel.rdbt_loai.getElements();
+        Enumeration<AbstractButton> eloai=manegerpanel.rdbt_loai.getElements();
         while(eloai.hasMoreElements())
         {
             AbstractButton temp=eloai.nextElement();
@@ -260,7 +261,7 @@ public class manegercontrol {
             }
         }
         String ppin="";
-        Enumeration<AbstractButton> eppin=gui.chinhsua.manegerpanel.rdbt_pp.getElements();
+        Enumeration<AbstractButton> eppin=manegerpanel.rdbt_pp.getElements();
         while(eppin.hasMoreElements())
         {
             AbstractButton temp=eppin.nextElement();
@@ -270,7 +271,7 @@ public class manegercontrol {
         }
         
         String muc="";
-        for(AbstractButton b : gui.chinhsua.manegerpanel.bmuc) {
+        for(AbstractButton b : manegerpanel.bmuc) {
             if(b.isSelected())
             {
                 muc=muc+" "+b.getText().replace("Mực","").replace("dầu","DAU").replace("bột","BOT").replace("nước","NUOC").replace("nhuộm","NHUOM").replace("đặc","DAC");
@@ -278,7 +279,7 @@ public class manegercontrol {
         }
         
         String giay="";
-        for(AbstractButton b : gui.chinhsua.manegerpanel.bgiay) {
+        for(AbstractButton b : manegerpanel.bgiay) {
             if(b.isSelected())
             {
                 giay=giay+" "+b.getText().replace("Giấy","");
@@ -286,7 +287,7 @@ public class manegercontrol {
         } 
         
         String cong="";
-        for(AbstractButton b : gui.chinhsua.manegerpanel.bcong) {
+        for(AbstractButton b : manegerpanel.bcong) {
             if(b.isSelected())
             {
                 cong=cong+" "+b.getText().replace("usb a", "USBA").replace("usb b", "USBB").replace("ethernet","ENTERNET").replace("kết nối không dây","WIRELESS").replace("dây","");
@@ -294,7 +295,7 @@ public class manegercontrol {
         }
         
         String hdh="";
-        for(AbstractButton b : gui.chinhsua.manegerpanel.bhdh) {
+        for(AbstractButton b : manegerpanel.bhdh) {
             if(b.isSelected())
             {
                 hdh=hdh+" "+b.getText();
@@ -308,25 +309,37 @@ public class manegercontrol {
     public static void newtable() 
       {
       newmodel();
-      gui.chinhsua.manegerpanel.table.setModel(gui.chinhsua.manegerpanel.model);
-      gui.chinhsua.manegerpanel.table.setFont(new Font("Tahoma", Font.PLAIN, 10));
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(0).setPreferredWidth(40);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(1).setPreferredWidth(151);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(2).setPreferredWidth(70);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(3).setPreferredWidth(100);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(4).setPreferredWidth(210);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(5).setPreferredWidth(290);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(6).setPreferredWidth(170);
-      gui.chinhsua.manegerpanel.table.getColumnModel().getColumn(7).setPreferredWidth(140);
-      gui.chinhsua.manegerpanel.table.getTableHeader().setResizingAllowed(false);
-      TableRowSorter sort=new TableRowSorter(gui.chinhsua.manegerpanel.model);
-      gui.chinhsua.manegerpanel.table.setRowSorter(sort);
+      manegerpanel.table.setModel(manegerpanel.model);
+      manegerpanel.table.setFont(new Font("Tahoma", Font.PLAIN, 10));
+      manegerpanel.table.getColumnModel().getColumn(0).setPreferredWidth(40);
+      manegerpanel.table.getColumnModel().getColumn(1).setPreferredWidth(151);
+      manegerpanel.table.getColumnModel().getColumn(2).setPreferredWidth(70);
+      manegerpanel.table.getColumnModel().getColumn(3).setPreferredWidth(100);
+      manegerpanel.table.getColumnModel().getColumn(4).setPreferredWidth(210);
+      manegerpanel.table.getColumnModel().getColumn(5).setPreferredWidth(290);
+      manegerpanel.table.getColumnModel().getColumn(6).setPreferredWidth(170);
+      manegerpanel.table.getColumnModel().getColumn(7).setPreferredWidth(140);
+      manegerpanel.table.getColumnModel().getColumn(0).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(1).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(2).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(3).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(4).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(5).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(6).setResizable(false);
+      manegerpanel.table.getColumnModel().getColumn(7).setResizable(false);
+      manegerpanel.table.getTableHeader().setResizingAllowed(false);
+      TableRowSorter<DefaultTableModel> sort=new TableRowSorter<DefaultTableModel>(manegerpanel.model);
+      manegerpanel.table.setRowSorter(sort);
       }
     public static void adddata(mayin a)
       {
         String sql1="INSERT INTO SANPHAM"
                 + " VALUES (\'"+a.masp+"\',\'"+a.tensp+"\',"+a.sl+")";
-         sever.update(sql1);
+         if(sever.update(sql1)==false)
+         	{	
+        	JOptionPane.showMessageDialog(null,"Mặt hàng này đã tồn tại");
+        	return;
+        	}
          objecttodata(a);
          String sql2="INSERT INTO MAYIN "
                  + "VALUES (\'"+a.masp+"\'"
@@ -343,9 +356,11 @@ public class manegercontrol {
          }
       public static void updatedata(mayin a) 
       {
+    	  int sure=JOptionPane.showConfirmDialog(null,"Bạn có chắc muốn thay đổi thông tin mặt hàng này","Wanring",JOptionPane.YES_NO_OPTION);
+    	  if(sure == JOptionPane.YES_OPTION){
           String sql1="UPDATE SANPHAM "
               + "SET MASP=\'"+a.masp+"\',TENSP =\'"+a.tensp+"\' "
-              + "WHERE MASP=\'"+gui.chinhsua.manegerpanel.key+"\'";
+              + "WHERE MASP=\'"+manegerpanel.key+"\'";
            sever.update(sql1);
          //loai
            objecttodata(a);
@@ -359,39 +374,43 @@ public class manegercontrol {
                                        + " WHERE MASP=\'"+a.masp+"\'";
            sever.update(sql2);
            newtable();
+    	  }
       }
       public static void deletedata(mayin a)
       {
+    	  int sure=JOptionPane.showConfirmDialog(null,"Bạn có chắc muốn xóa mặt hàng này","Wanring",JOptionPane.YES_NO_OPTION);
+    	  if(sure == JOptionPane.YES_OPTION){
           String sql="DELETE FROM SANPHAM WHERE MASP=\'"+a.masp+"\'";
-          sever.update(sql);
-          newtable();
+          if(sever.update(sql)==false)
+        	  JOptionPane.showMessageDialog(null,"Không thể xóa mặt hàng\n Mặt hàng này có dữ liệu khác");
+          newtable();}
       }
-      public static void refresh()
+      static void refresh()
       {
-          gui.chinhsua.manegerpanel.txtmasp.setText("");
-          gui.chinhsua.manegerpanel.txttensp.setText("");
-          gui.chinhsua.manegerpanel.rdbtVanphong.setSelected(true);
-          gui.chinhsua.manegerpanel.rdbtlaser.setSelected(true);;
-          gui.chinhsua.manegerpanel.ch_ribbon.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_nhuom.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_nuoc.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_bot.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_dau.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_dac.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_ford.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_couche.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_bristol.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_duplex.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_decal.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_kraft.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_ivorny.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_usba.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_usbb.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_lan.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_wireless.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_window.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_ios.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_linux.setSelected(false);
-          gui.chinhsua.manegerpanel.ch_android.setSelected(false);
+          manegerpanel.txtmasp.setText("");
+          manegerpanel.txttensp.setText("");
+          manegerpanel.rdbtVanphong.setSelected(true);
+          manegerpanel.rdbtlaser.setSelected(true);;
+          manegerpanel.ch_ribbon.setSelected(false);
+          manegerpanel.ch_nhuom.setSelected(false);
+          manegerpanel.ch_nuoc.setSelected(false);
+          manegerpanel.ch_bot.setSelected(false);
+          manegerpanel.ch_dau.setSelected(false);
+          manegerpanel.ch_dac.setSelected(false);
+          manegerpanel.ch_ford.setSelected(false);
+          manegerpanel.ch_couche.setSelected(false);
+          manegerpanel.ch_bristol.setSelected(false);
+          manegerpanel.ch_duplex.setSelected(false);
+          manegerpanel.ch_decal.setSelected(false);
+          manegerpanel.ch_kraft.setSelected(false);
+          manegerpanel.ch_ivorny.setSelected(false);
+          manegerpanel.ch_usba.setSelected(false);
+          manegerpanel.ch_usbb.setSelected(false);
+          manegerpanel.ch_lan.setSelected(false);
+          manegerpanel.ch_wireless.setSelected(false);
+          manegerpanel.ch_window.setSelected(false);
+          manegerpanel.ch_ios.setSelected(false);
+          manegerpanel.ch_linux.setSelected(false);
+          manegerpanel.ch_android.setSelected(false);
       }
 }
