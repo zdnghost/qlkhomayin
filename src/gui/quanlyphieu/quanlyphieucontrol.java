@@ -32,7 +32,7 @@ public class quanlyphieucontrol
                return false;
             }
         };
-        String Sql="select * from PHIEUNHAPXUAT";
+        String Sql="select * from PHIEUNHAPXUAT order by NGAY DESC";
         ResultSet data;
       try {
           data = sever.getquery(Sql);
@@ -59,8 +59,6 @@ public class quanlyphieucontrol
     quanlyphieupanel.table.setModel(quanlyphieupanel.model);
     quanlyphieupanel.table.setFont(new Font("Tahoma", Font.PLAIN, 10));
     quanlyphieupanel.table.getTableHeader().setResizingAllowed(false);
-    TableRowSorter sort=new TableRowSorter(quanlyphieupanel.model);
-    quanlyphieupanel.table.setRowSorter(sort);
     quanlyphieupanel.table.getColumnModel().getColumn(0).setResizable(false);
     quanlyphieupanel.table.getColumnModel().getColumn(1).setResizable(false);
     quanlyphieupanel.table.getColumnModel().getColumn(2).setResizable(false);

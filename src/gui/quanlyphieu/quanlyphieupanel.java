@@ -85,7 +85,7 @@ public class quanlyphieupanel extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				if(e.getButton()==MouseEvent.BUTTON1){
 					now= LocalDateTime.now(); 
-					tab.setSelectedIndex(1);
+					tab.setSelectedIndex(2);
 					xuatcontrol.newtable();
 					quanlyphieucontrol.chonhang.resettable();
 					xuatpanel.day.setText(dtf.format(now));
