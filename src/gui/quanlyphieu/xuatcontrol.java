@@ -3,6 +3,7 @@ package gui.quanlyphieu;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import database.sever;
@@ -54,7 +55,7 @@ private static void newmodel()
 
 	        };
 	        for(int i=0;i<mathang.listma.size();i++)
-	        	xuatpanel.model.addRow(new Object[] {i+1,quanlyphieucontrol.chonhang.listma.get(i),quanlyphieucontrol.chonhang.listten.get(i),null,null});
+	        	xuatpanel.model.addRow(new Object[] {i+1,mathang.listma.get(i),mathang.listten.get(i),null,null});
 }
 static void newtable()
 {
@@ -72,25 +73,36 @@ static void newtable()
 	xuatpanel.table.getColumnModel().getColumn(4).setResizable(false);
 }
 
-static void xuat()
+static boolean xuat()
 {
 	String sql1="INSERT into PHIEUNHAPXUAT VALUEs (\'"+xuatpanel.map.getText()+"\',0,convert(datetime,'"+xuatpanel.day.getText()+"',20),'"+xuatpanel.us.getText()+"')"; 
-	sever.update(sql1);
 	String sql2="INSERT into CHITIETPHIEU VALUES ";
+
+	System.out.print("ok");
 	for(int i=0;i<xuatpanel.model.getRowCount();i++)
 	{
 		
 		String ghichu;
 		if(xuatpanel.model.getValueAt(i,4)!=null)
 		ghichu="'"+xuatpanel.model.getValueAt(i,4)+"'";
-		else ghichu="null";
+		else ghichu="''";
+		if(xuatpanel.model.getValueAt(i,3)!=null&&Integer.parseInt(xuatpanel.model.getValueAt(i,3).toString())<=mathang.listsl.get(i)&&Integer.parseInt(xuatpanel.model.getValueAt(i,3).toString())>0)
 		sql2+="('"+xuatpanel.map.getText()+"',"+xuatpanel.model.getValueAt(i,0)+",'"+xuatpanel.model.getValueAt(i,1)+"',-"+(xuatpanel.model.getValueAt(i,3))+","+ghichu+")";
-		if(i!=xuatpanel.model.getRowCount()-1)
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Số lượng không đúng quy định");
+			return false;
+		}
+		if(i<(xuatpanel.model.getRowCount()-1))
 		{
 			sql2+=',';
 		}
 	}
+	if(xuatpanel.model.getRowCount()==0)
+	return false;
+	sever.update(sql1);
 	sever.update(sql2);
+	return true;
 }
 
 }

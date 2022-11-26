@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 public class manegerpanel extends JPanel {
 
  
@@ -71,70 +73,49 @@ public class manegerpanel extends JPanel {
         JPanel themhang = new JPanel();
         themhang.setBackground(new Color(204, 255, 255));
         themhang.setBounds(0, 0,1152, 641);
-        themhang.setLayout(null);
         this.add(themhang);
         JLabel lblmasp = new JLabel("Mã sản phẩm");
         lblmasp.setForeground(new Color(0, 255, 255));
-        lblmasp.setBounds(10, 13, 115, 35);
         lblmasp.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblmasp);
         
         txtmasp = new JTextField();
         txtmasp.setFont(new Font("Tahoma", Font.PLAIN, 11));
         lblmasp.setLabelFor(txtmasp);
-        txtmasp.setBounds(135, 15, 260, 33);
         txtmasp.setColumns(10);
-        themhang.add(txtmasp);
         
         JLabel lblTenSanPham = new JLabel("Tên sản phẩm");
         lblTenSanPham.setForeground(new Color(0, 255, 255));
-        lblTenSanPham.setBounds(10, 55, 101, 33);
         lblTenSanPham.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblTenSanPham);
         
         txttensp = new JTextField();
         txttensp.setFont(new Font("Tahoma", Font.PLAIN, 11));
         lblTenSanPham.setLabelFor(txttensp);
-        txttensp.setBounds(121, 56, 302, 33);
         txttensp.setColumns(10);
-        themhang.add(txttensp);
         
         JLabel lblLoai = new JLabel("Loại");
         lblLoai.setForeground(new Color(0, 255, 255));
-        lblLoai.setBounds(506, 14, 42, 33);
         lblLoai.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblLoai);
         
         JLabel lblPhuongPhapIn = new JLabel("Phương pháp in");
         lblPhuongPhapIn.setForeground(new Color(0, 255, 255));
-        lblPhuongPhapIn.setBounds(433, 55, 115, 33);
         lblPhuongPhapIn.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblPhuongPhapIn);
         
         JLabel lblmuc = new JLabel("Mực");
         lblmuc.setForeground(new Color(0, 255, 255));
-        lblmuc.setBounds(10, 99, 42, 24);
         lblmuc.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblmuc);
         
         JLabel lblTenSanPham_2 = new JLabel("Cổng kết nối");
         lblTenSanPham_2.setForeground(new Color(0, 255, 255));
-        lblTenSanPham_2.setBounds(10, 154, 101, 33);
         lblTenSanPham_2.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblTenSanPham_2);
         
         JLabel lblNewLabel_5 = new JLabel("Hệ điều hành");
         lblNewLabel_5.setForeground(new Color(0, 255, 255));
-        lblNewLabel_5.setBounds(651, 154, 88, 33);
         lblNewLabel_5.setFont(new Font("Dialog", Font.BOLD, 13));
-        themhang.add(lblNewLabel_5);
         
         //loai may in
         JPanel chloaimayin = new JPanel();
         lblLoai.setLabelFor(chloaimayin);
-        chloaimayin.setBounds(555, 13, 299, 39);
         chloaimayin.setBackground(new Color(204, 255, 255));
-        themhang.add(chloaimayin);
         chloaimayin.setOpaque(false);
         chloaimayin.setLayout(new GridLayout(0, 2, 0, 0));
         
@@ -157,8 +138,6 @@ public class manegerpanel extends JPanel {
         //phuong phap in
         JPanel phuongphap = new JPanel();
         lblPhuongPhapIn.setLabelFor(phuongphap);
-        phuongphap.setBounds(558, 55, 553, 33);
-        themhang.add(phuongphap);
 
         phuongphap.setOpaque(false);
         phuongphap.setLayout(new GridLayout(0, 4, 0, 0));
@@ -198,9 +177,7 @@ public class manegerpanel extends JPanel {
         //muc
         JPanel muc = new JPanel();
         lblmuc.setLabelFor(muc);
-        muc.setBounds(62, 97, 275, 44);
         muc.setOpaque(false);
-        themhang.add(muc);
         muc.setLayout(new GridLayout(0, 3, 0, 0));
 
         ch_ribbon = new JCheckBox("Mực RIBBON");
@@ -249,8 +226,6 @@ public class manegerpanel extends JPanel {
                 
         JPanel giay = new JPanel();
         giay.setOpaque(false);
-        giay.setBounds(457, 99, 376, 44);
-        themhang.add(giay);
         giay.setLayout(new GridLayout(0, 4, 0, 0));
                 
         ch_ivorny = new JCheckBox("Giấy IVORNY");
@@ -306,9 +281,7 @@ public class manegerpanel extends JPanel {
         
         JPanel cong = new JPanel();
         lblTenSanPham_2.setLabelFor(cong);
-        cong.setBounds(135, 154, 449, 33);
         cong.setOpaque(false);
-        themhang.add(cong);
         cong.setLayout(new GridLayout(0, 4, 0, 0));
         
         ch_usba = new JCheckBox("dây usb a");
@@ -344,9 +317,7 @@ public class manegerpanel extends JPanel {
         
         JPanel hdh = new JPanel();
         lblNewLabel_5.setLabelFor(hdh);
-        hdh.setBounds(749, 154, 338, 33);
         hdh.setOpaque(false);
-        themhang.add(hdh);
         hdh.setLayout(new GridLayout(0, 4, 0, 0));
         
         ch_window = new JCheckBox("Windows");
@@ -388,14 +359,12 @@ public class manegerpanel extends JPanel {
         JLabel lblgiay = new JLabel("Giấy ");
         lblgiay.setForeground(new Color(0, 255, 255));
         lblgiay.setFont(new Font("Dialog", Font.BOLD, 13));
-        lblgiay.setBounds(405, 100, 42, 24);
-        themhang.add(lblgiay);
         
 
         manegercontrol.newtable();
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 327, 1132, 303);
-        themhang.add(scrollPane);
+        scrollPane.setOpaque(false);
+        table.setOpaque(false);
         //xu ly su kien click vao dong cua bang
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -412,8 +381,6 @@ public class manegerpanel extends JPanel {
              manegercontrol.adddata(a);
             }
         });
-        add.setBounds(999, 214, 88, 23);
-        themhang.add(add);
         
         JLabel lblNewLabel_2 = new JLabel("Thêm");
         add.add(lblNewLabel_2);
@@ -425,8 +392,6 @@ public class manegerpanel extends JPanel {
                 mayin a=manegercontrol.setobject();
                 manegercontrol.deletedata(a);
             }}});
-        delete.setBounds(897, 214, 88, 23);
-        themhang.add(delete);
         
         JLabel lblNewLabel_1 = new JLabel("Xóa");
         delete.add(lblNewLabel_1);
@@ -440,8 +405,6 @@ public class manegerpanel extends JPanel {
                     key=a.masp;
                 manegercontrol.updatedata(a);
             }}});
-        update.setBounds(799, 214, 88, 23);
-        themhang.add(update);
         
         JLabel lblNewLabel = new JLabel("Sửa");
         update.add(lblNewLabel);
@@ -452,17 +415,149 @@ public class manegerpanel extends JPanel {
             public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
             	manegercontrol.refresh();
             }}});
-        refrest.setBounds(701, 214, 88, 23);
-        themhang.add(refrest);
         
         JLabel lblrefresh = new JLabel("Đặt lại");
         refrest.add(lblrefresh);
         JLabel lblbackground = new JLabel("New label");
         lblbackground.setForeground(new Color(0, 255, 255));
-        lblbackground.setBounds(0, 0, 1152, 642);
-        themhang.add(lblbackground);
         lblbackground.setFont(new Font("Dialog", Font.BOLD, 13));
         lblbackground.setIcon(background);
+        GroupLayout gl_themhang = new GroupLayout(themhang);
+        gl_themhang.setHorizontalGroup(
+        	gl_themhang.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(10)
+        			.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1132, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(999)
+        			.addComponent(add, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(433)
+        			.addComponent(lblPhuongPhapIn, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(457)
+        			.addComponent(giay, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(10)
+        			.addComponent(lblmasp, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(651)
+        			.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(749)
+        			.addComponent(hdh, GroupLayout.PREFERRED_SIZE, 338, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(897)
+        			.addComponent(delete, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(62)
+        			.addComponent(muc, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(555)
+        			.addComponent(chloaimayin, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(701)
+        			.addComponent(refrest, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(506)
+        			.addComponent(lblLoai, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(121)
+        			.addComponent(txttensp, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(135)
+        			.addComponent(txtmasp, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(558)
+        			.addComponent(phuongphap, GroupLayout.PREFERRED_SIZE, 553, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(10)
+        			.addComponent(lblmuc, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(10)
+        			.addComponent(lblTenSanPham, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(10)
+        			.addComponent(lblTenSanPham_2, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(405)
+        			.addComponent(lblgiay, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(135)
+        			.addComponent(cong, GroupLayout.PREFERRED_SIZE, 449, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(799)
+        			.addComponent(update, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+        		.addComponent(lblbackground, GroupLayout.PREFERRED_SIZE, 1152, GroupLayout.PREFERRED_SIZE)
+        );
+        gl_themhang.setVerticalGroup(
+        	gl_themhang.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(327)
+        			.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(214)
+        			.addComponent(add, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(55)
+        			.addComponent(lblPhuongPhapIn, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(99)
+        			.addComponent(giay, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(13)
+        			.addComponent(lblmasp, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(154)
+        			.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(154)
+        			.addComponent(hdh, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(214)
+        			.addComponent(delete, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(97)
+        			.addComponent(muc, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(13)
+        			.addComponent(chloaimayin, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(214)
+        			.addComponent(refrest, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(14)
+        			.addComponent(lblLoai, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(56)
+        			.addComponent(txttensp, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(15)
+        			.addComponent(txtmasp, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(55)
+        			.addComponent(phuongphap, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(99)
+        			.addComponent(lblmuc, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(55)
+        			.addComponent(lblTenSanPham, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(154)
+        			.addComponent(lblTenSanPham_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(100)
+        			.addComponent(lblgiay, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(154)
+        			.addComponent(cong, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        		.addGroup(gl_themhang.createSequentialGroup()
+        			.addGap(214)
+        			.addComponent(update, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+        		.addComponent(lblbackground, GroupLayout.PREFERRED_SIZE, 642, GroupLayout.PREFERRED_SIZE)
+        );
+        themhang.setLayout(gl_themhang);
         
     }
 }

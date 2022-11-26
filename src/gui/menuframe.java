@@ -7,7 +7,8 @@ import javax.swing.border.EmptyBorder;
 import database.sever;
 import gui.chinhsua.manegerpanel;
 import gui.quanlyphieu.quanlyphieupanel;
-
+import gui.tonkho.tonkhopanel;
+import moudel.user;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
@@ -20,15 +21,17 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
 import javax.swing.border.LineBorder;
+import java.awt.GridLayout;
 
 public class menuframe extends JFrame {
 
     private JPanel contentPane;
     public static JPanel childPannel;
+    public static JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
     /**
      * Launch the application.
      */
-    public static String user; 
+    public static user user=new user("",""); 
     public static void show(JPanel a,JPanel b)
     {
         a.setLocation(0, 0);
@@ -40,10 +43,9 @@ public class menuframe extends JFrame {
         a.add(b);
         a.validate();
     }
-    private homepanel main=new homepanel();
-    private manegerpanel man=new manegerpanel();
-    private quanlyphieupanel phieu=new quanlyphieupanel();
-    public menuframe(String user,boolean admin) throws SQLException {
+    
+
+    public menuframe(user a) throws SQLException {
         setResizable(false);
         setTitle("QLKMI");
         setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -58,7 +60,11 @@ public class menuframe extends JFrame {
             }
             }
         });
-       
+        user=a;
+        homepanel main=new homepanel();
+        manegerpanel man=new manegerpanel();
+        quanlyphieupanel phieu=new quanlyphieupanel();
+        tonkhopanel tonkho=new tonkhopanel();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280,720);
@@ -67,15 +73,15 @@ public class menuframe extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
-//info panel        
+        //info panel        
         JPanel info = new JPanel();
         info.setBackground(Color.LIGHT_GRAY);
         info.setBounds(0, 0, 1264, 39);
         contentPane.add(info);
         info.setLayout(null);
         //user info
-        JLabel lbluser = new JLabel("Username : "+user);
-        lbluser.setBounds(1025, 0, 135, 14);
+        JLabel lbluser = new JLabel("Username : "+a.username);
+        lbluser.setBounds(979, 0, 180, 14);
         info.add(lbluser);
         //log out
         JLabel logout = new JLabel("Log out");
@@ -99,15 +105,13 @@ public class menuframe extends JFrame {
         logout.setBounds(1169, 11, 59, 17);
         info.add(logout);
         
-        //admin
-        if(admin==true)
-        {
-            JLabel lblNewLabel = new JLabel("ADMIN");
-            lblNewLabel.setBounds(1027, 25, 46, 14);
-            info.add(lblNewLabel);
-        }
-//menu panel       
-        JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
+        //chuc vu
+      	JLabel lblNewLabel = new JLabel(a.chucvu);
+        lblNewLabel.setBounds(979, 25, 180, 14);
+        info.add(lblNewLabel);
+        //menu panel       
+        
+        tab.setEnabled(false);
         tab.setBounds(107, 11, 1157, 670);
         contentPane.add(tab);
         
@@ -121,7 +125,7 @@ public class menuframe extends JFrame {
         show(menu2,man);
         tab.addTab("New tab", null, menu2, null);
         
-        JLabel lblMenu = new JLabel("quản lý mặt hàng");
+        JLabel lblMenu = new JLabel("Quản lý mặt hàng");
         lblMenu.setBounds(542, 5, 32, 14);
         menu2.add(lblMenu);
         
@@ -132,6 +136,10 @@ public class menuframe extends JFrame {
         
         JPanel bmenu = new JPanel();
         show(menu3,phieu);
+        
+        JPanel menu4 = new JPanel();
+        show(menu4,tonkho);
+        tab.addTab("New tab", null, menu4, null);
         bmenu.setBackground(Color.LIGHT_GRAY);
         bmenu.setBounds(0, 40, 108, 641);
         contentPane.add(bmenu);
@@ -140,25 +148,36 @@ public class menuframe extends JFrame {
         JPanel bmenu1 = new JPanel();
         
         bmenu1.setBackground(Color.cyan);
-        bmenu1.setBounds(0, 11, 143, 43);
+        bmenu1.setBounds(0, 11, 108, 43);
         bmenu.add(bmenu1);
-        bmenu1.setLayout(null);
+        bmenu1.setLayout(new GridLayout(0, 1, 0, 0));
         
         JLabel lblmenu1 = new JLabel("Home");
-        lblmenu1.setBounds(0, 0, 143, 43);
+        lblmenu1.setHorizontalAlignment(SwingConstants.CENTER);
         bmenu1.add(lblmenu1);
         
         JPanel bmenu2 = new JPanel();
-        bmenu2.setLayout(null);
-        bmenu2.setBounds(0, 65, 143, 43);
+        bmenu2.setBounds(0, 173, 108, 43);
+        if(user.chucvu.trim().contains("ADMIN"))
         bmenu.add(bmenu2);
+        bmenu2.setLayout(new GridLayout(0, 1, 0, 0));
         
-        JLabel lblmenu2 = new JLabel("Quản lý sản phẩm ");
-        lblmenu2.setBounds(0, 0, 143, 43);
+        JLabel lblmenu2 = new JLabel("Quản lý mặt hàng ");
+        lblmenu2.setHorizontalAlignment(SwingConstants.CENTER);
         bmenu2.add(lblmenu2);
         
         JPanel bmenu3 = new JPanel();
         
+       
+        bmenu3.setBounds(0, 119, 108, 43);
+        bmenu.add(bmenu3);
+        bmenu3.setLayout(new GridLayout(0, 1, 0, 0));
+        
+        JLabel lblmenu3 = new JLabel("Phiếu xuất nhập");
+        lblmenu3.setHorizontalAlignment(SwingConstants.CENTER);
+        bmenu3.add(lblmenu3);
+        
+        JPanel bmenu4 = new JPanel();
         bmenu1.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
@@ -166,6 +185,7 @@ public class menuframe extends JFrame {
                 bmenu1.setBackground(Color.cyan);
                 bmenu2.setBackground(Color.white);
                 bmenu3.setBackground(Color.white);
+                bmenu4.setBackground(Color.white);
             }
         }});
         bmenu2.addMouseListener(new MouseAdapter() {
@@ -175,6 +195,7 @@ public class menuframe extends JFrame {
                 bmenu2.setBackground(Color.cyan);
                 bmenu1.setBackground(Color.white);
                 bmenu3.setBackground(Color.white);
+                bmenu4.setBackground(Color.white);
             }
         }});
         bmenu3.addMouseListener(new MouseAdapter() {
@@ -184,14 +205,26 @@ public class menuframe extends JFrame {
                 bmenu3.setBackground(Color.cyan);
                 bmenu2.setBackground(Color.white);
                 bmenu1.setBackground(Color.white);
+                bmenu4.setBackground(Color.white);
             }
         }});
-        bmenu3.setLayout(null);
-        bmenu3.setBounds(0, 119, 143, 43);
-        bmenu.add(bmenu3);
+        bmenu4.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mousePressed(MouseEvent e) {
+        		tab.setSelectedIndex(3);
+        		tonkho.resettable();
+                bmenu4.setBackground(Color.cyan);
+                bmenu2.setBackground(Color.white);
+                bmenu1.setBackground(Color.white);
+                bmenu3.setBackground(Color.white);
+        	}
+        });
+        bmenu4.setBounds(0, 65, 108, 43);
+        bmenu.add(bmenu4);
+        bmenu4.setLayout(new GridLayout(0, 1, 0, 0));
         
-        JLabel lblmenu3 = new JLabel("Quản lý phiếu");
-        lblmenu3.setBounds(0, 0, 143, 43);
-        bmenu3.add(lblmenu3);
+        JLabel lblQunLTn = new JLabel("Kho hàng");
+        lblQunLTn.setHorizontalAlignment(SwingConstants.CENTER);
+        bmenu4.add(lblQunLTn);
     }
 }

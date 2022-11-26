@@ -10,12 +10,19 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 public class sever {
     public static Connection con;
-    public static ResultSet getquery(String Sql) throws SQLException
+    public static ResultSet getquery(String Sql)
     {
-            con = DriverManager.getConnection("jdbc:sqlserver://ZDNGHOST2\\SQLEXPRESS:1433;databaseName=QLKMI","qlmayin","23122003");
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(Sql);
-            return rs;
+            try {
+				con = DriverManager.getConnection("jdbc:sqlserver://ZDNGHOST2\\SQLEXPRESS:1433;databaseName=QLKMI","qlmayin","23122003");
+				Statement st = con.createStatement();
+	            ResultSet rs = st.executeQuery(Sql);
+	            return rs;
+            } catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+            
     }
     public static boolean update(String sql)
     {

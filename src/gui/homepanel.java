@@ -22,8 +22,7 @@ public class homepanel extends JPanel {
         themhang.setLayout(null);
         this.add(themhang);
          //background
-        ImageIcon background=new
-        ImageIcon("src\\gui\\icon\\bg.png");
+        ImageIcon background=new ImageIcon("src\\gui\\icon\\bg.png");
         Image icon=background.getImage();
         Image newicon=icon.getScaledInstance(1280, 750, Image.SCALE_SMOOTH);
         background=new ImageIcon(newicon);

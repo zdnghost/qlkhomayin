@@ -46,7 +46,7 @@ public class quanlyphieucontrol
         else
         	loai="Xuất";
         quanlyphieupanel.model.addRow(new Object[]
-        {a.getMaphieu(),a.getUser(),a.getNgay(),loai});
+        {a.getMaphieu(),a.getUser(),(a.getNgay()+"n").replace(".0n",""),loai});
         }
       } catch (SQLException e) {
           // TODO Auto-generated catch block

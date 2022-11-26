@@ -9,6 +9,8 @@ import database.sever;
 import moudel.user;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.JTextField;
@@ -41,43 +43,6 @@ public class login extends JDialog {
 			e.printStackTrace();
 		}
 	}
-	public boolean check(String u,String p) throws SQLException {
-	    String Sql="select * from USERDB";
-	    ResultSet rs=sever.getquery(Sql);
-	    boolean c=false;
-	    while(rs.next())
-	    {
-	        if((rs.getString("USERNAME").trim().equals(u)))
-	        {
-	            if(rs.getString("PASSWORD").trim().equals(p))
-	            {
-	                c=true;
-	                break;
-	            }
-	            else
-	            {
-	                break;
-	            }
-	            
-	        }
-	    }
-        return c;
-	}
-	public boolean isadmin(String u)throws SQLException {
-        String Sql="select * from USERDB";
-        ResultSet rs=sever.getquery(Sql);
-        int c;
-        while(rs.next())
-        {
-            if((rs.getString("USERNAME").trim().equals(u)))
-            {
-                if(rs.getInt("CHUCVU")==3)
-                break ;
-                else return true;
-            }
-        }
-        return false;
-    }
 
 	/**
 	 * Create the dialog.
@@ -138,23 +103,23 @@ public class login extends JDialog {
 		    @Override
 		    public void mousePressed(MouseEvent e) {if(e.getButton()==MouseEvent.BUTTON1){
 		        login.setBackground(new Color(220, 228, 235));
-		        user temp=new user();
 		        String username=txtUser.getText();
-		          String password=new String(txtPass.getPassword());
+		        String password=new String(txtPass.getPassword());
+		        user temp=new user(username,password);
 		          try {
-		          if(check(username,password))
-		          {
-		          boolean admin=isadmin(username);
-		          menuframe.user=username;
-		          menuframe a=new menuframe(username,admin);
-		          a.setVisible(true);
-		          sever.disconect();
-		          dispose();
+		        	 if(temp.checktk())
+		        	 	{
+		        		 	temp.checkcv();
+		        	  		menuframe a=new menuframe(temp);
+		        	  		a.setVisible(true);
+		        	  		sever.disconect();
+		        	  		dispose();
+		        	 	}
+		        	 else {
+		        		 JOptionPane.showMessageDialog(null, "Username hoặc Password nhập ");
+		        	 }
 		          }
-		          else {
-		          System.out.println("opp, wrong");
-		          }
-		          } catch (SQLException e1) {
+		          catch (SQLException e1) {
 		          // TODO Auto-generated catch block
 		          e1.printStackTrace();
 		          }

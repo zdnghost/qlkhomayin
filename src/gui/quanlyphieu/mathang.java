@@ -39,7 +39,7 @@ public class mathang extends JFrame {
 	
 	static ArrayList<String> listma= new ArrayList<String>();
 	static ArrayList<String> listten= new ArrayList<String>();
-//	static ArrayList<Integer> listsl= new ArrayList<Integer>();
+	static ArrayList<Integer> listsl= new ArrayList<Integer>();
 	/**
 	 * Launch the application.
 	 */
@@ -84,16 +84,15 @@ public class mathang extends JFrame {
 	public void resettable() 
     {
     newmodel();
-    this.table.setModel(model);
-    this.table.getColumnModel().getColumn(0).setPreferredWidth(100);
-    this.table.getColumnModel().getColumn(1).setPreferredWidth(502);
-    this.table.getColumnModel().getColumn(2).setPreferredWidth(80);
-    this.table.getColumnModel().getColumn(3).setPreferredWidth(40);
-    this.table.getColumnModel().getColumn(0).setResizable(false);
-    this.table.getColumnModel().getColumn(1).setResizable(false);
-    this.table.getColumnModel().getColumn(2).setResizable(false);
-    this.table.getColumnModel().getColumn(3).setResizable(false);
-    System.out.println("ok");
+    mathang.table.setModel(model);
+    mathang.table.getColumnModel().getColumn(0).setPreferredWidth(100);
+    mathang.table.getColumnModel().getColumn(1).setPreferredWidth(502);
+    mathang.table.getColumnModel().getColumn(2).setPreferredWidth(80);
+    mathang.table.getColumnModel().getColumn(3).setPreferredWidth(40);
+    mathang.table.getColumnModel().getColumn(0).setResizable(false);
+    mathang.table.getColumnModel().getColumn(1).setResizable(false);
+    mathang.table.getColumnModel().getColumn(2).setResizable(false);
+    mathang.table.getColumnModel().getColumn(3).setResizable(false);
     }
 	private static void filter(String ma,String ten){
 	    TableRowSorter<DefaultTableModel> fl=new  TableRowSorter<DefaultTableModel>(model);
@@ -117,10 +116,12 @@ public class mathang extends JFrame {
 		{
 			String matemp=table.getValueAt(i,0).toString();
 			String tentemp=table.getValueAt(i,1).toString();
+			int sltemp=(int) table.getValueAt(i,2);
 			Boolean check=Boolean.valueOf(table.getValueAt(i, 3).toString());
 			if(check) {
 				listma.add(matemp);
 				listten.add(tentemp);
+				listsl.add(sltemp);
 			}
 		}
 		if(quanlyphieupanel.tab.getSelectedIndex()==1)
