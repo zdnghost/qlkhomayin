@@ -22,6 +22,8 @@ import java.sql.SQLException;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class login extends JDialog {
 
@@ -29,7 +31,7 @@ public class login extends JDialog {
 	private JTextField txtUser;
 	private JPasswordField txtPass;
 	private JLabel login;
-
+	menuframe a;
 
 	/**
 	 * Launch the application.
@@ -48,7 +50,7 @@ public class login extends JDialog {
 	 * Create the dialog.
 	 */
 	public login() {
-	    setResizable(false);
+		setResizable(false);
 		setTitle("LOGIN");
 		setBounds(100, 100, 451, 226);
 		getContentPane().setLayout(new BorderLayout());
@@ -110,13 +112,13 @@ public class login extends JDialog {
 		        	 if(temp.checktk())
 		        	 	{
 		        		 	temp.checkcv();
-		        	  		menuframe a=new menuframe(temp);
+		        	  		a=new menuframe(temp);
 		        	  		a.setVisible(true);
 		        	  		sever.disconect();
 		        	  		dispose();
 		        	 	}
 		        	 else {
-		        		 JOptionPane.showMessageDialog(null, "Username hoặc Password nhập ");
+		        		 JOptionPane.showMessageDialog(null, "Username hoặc Password nhập sai");
 		        	 }
 		          }
 		          catch (SQLException e1) {
@@ -125,16 +127,29 @@ public class login extends JDialog {
 		          }
 		          
 		          
-		    }}
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				login.setBackground(new Color(240, 248, 255));
-			}
-		});
+		    }}});
 		
 		login.setHorizontalAlignment(SwingConstants.CENTER);
 		login.setBounds(351, 153, 74, 23);
 		contentPanel.add(login);
+		
+		JLabel lblReset = new JLabel("reset");
+		lblReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(e.getButton()==MouseEvent.BUTTON1)
+				{
+					resetpass a=new resetpass();
+					a.setVisible(true);
+					dispose();
+				}
+			}
+		});
+		lblReset.setOpaque(true);
+		lblReset.setHorizontalAlignment(SwingConstants.CENTER);
+		lblReset.setBackground(new Color(240, 248, 255));
+		lblReset.setBounds(267, 153, 74, 23);
+		contentPanel.add(lblReset);
 		JLabel lblBackground = new JLabel("background");
 		lblBackground.setBounds(0, 0, 435, 187);
 		lblBackground.setIcon(background);

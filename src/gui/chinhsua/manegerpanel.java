@@ -68,7 +68,7 @@ public class manegerpanel extends JPanel {
     static ArrayList<JCheckBox> bhdh=new ArrayList<JCheckBox>();
     static ArrayList<JCheckBox> bcong=new  ArrayList<JCheckBox>();
     static ArrayList<JCheckBox> bgiay=new ArrayList<JCheckBox>();
-    public manegerpanel() throws SQLException {
+    public manegerpanel()  {
         setLayout(null);
         JPanel themhang = new JPanel();
         themhang.setBackground(new Color(204, 255, 255));

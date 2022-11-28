@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import database.sever;
+import gui.menuframe;
 import moudel.mayin;
 import moudel.phieu;
 
@@ -63,6 +64,14 @@ public class quanlyphieucontrol
     quanlyphieupanel.table.getColumnModel().getColumn(1).setResizable(false);
     quanlyphieupanel.table.getColumnModel().getColumn(2).setResizable(false);
     quanlyphieupanel.table.getColumnModel().getColumn(3).setResizable(false);
+    if(menuframe.user.chucvu.contains("ADMIN"))
+    	quanlyphieupanel.button.setBounds(10, 42, 164, 46*2);
+	else
+		quanlyphieupanel.button.setBounds(10, 42, 164, 46);
+    if(menuframe.user.chucvu.contains("nhập")||menuframe.user.chucvu.contains("ADMIN"))
+    	quanlyphieupanel.button.add(quanlyphieupanel.bnhap);
+	if(menuframe.user.chucvu.contains("xuất")||menuframe.user.chucvu.contains("ADMIN"))
+		quanlyphieupanel.button.add(quanlyphieupanel.bxuat);
     }
     static void updatesl()
     {

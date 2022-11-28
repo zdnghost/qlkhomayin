@@ -34,7 +34,7 @@ public class homepanel extends JPanel {
         lblNewLabel.setBounds(73, 253, 963, 122);
         themhang.add(lblNewLabel);
         
-        JLabel lblNewLabel_1 = new JLabel("CREATED BY : Nhóm 14");
+        JLabel lblNewLabel_1 = new JLabel("MADE BY : Nhóm 14");
         lblNewLabel_1.setForeground(new Color(0, 255, 255));
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 35));

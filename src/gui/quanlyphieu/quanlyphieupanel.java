@@ -30,19 +30,24 @@ public class quanlyphieupanel extends JPanel {
 	static JTable table=new JTable();
     static DefaultTableModel model;
     static JTabbedPane tab;
+    static JPanel bxuat = new JPanel();
+    static JPanel bnhap = new JPanel();
+    static JPanel button = new JPanel();
 	/**
 	 * Create the panel.
 	 */
 	public quanlyphieupanel() {
 		setLayout(null);
-		
+		bxuat = new JPanel();
+	    bnhap = new JPanel();
+	    button = new JPanel();
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1152, 641);
 		add(panel);
 		panel.setLayout(null);
 		
 		tab = new JTabbedPane(JTabbedPane.TOP);
-		tab.setBounds(0, -20, 1152, 661);
+		tab.setBounds(-2, -25, 1152, 679);
 		panel.add(tab);
 		
 		JPanel quanlyphieu = new JPanel();
@@ -50,10 +55,15 @@ public class quanlyphieupanel extends JPanel {
 		tab.addTab("New tab", null, quanlyphieu, null);
 		quanlyphieu.setLayout(null);
 		
-		JPanel bnhap = new JPanel();
+		
 		bnhap.setBounds(10, 86, 132, 38);
-		if(menuframe.user.chucvu.contains("nhập")||menuframe.user.chucvu.contains("ADMIN"))
-		quanlyphieu.add(bnhap);
+		
+		button.setOpaque(false);
+        
+		
+        quanlyphieu.add(button);
+        button.setLayout(new GridLayout(0, 1, 0, 0));
+       
 		bnhap.setLayout(new GridLayout(0, 1, 0, 0));
 		//bnhap
 		JLabel bphieunhap = new JLabel("Tạo phiếu nhập");
@@ -76,10 +86,8 @@ public class quanlyphieupanel extends JPanel {
 		
 		bnhap.add(bphieunhap);
 		
-		JPanel bxuat = new JPanel();
+		
 		bxuat.setBounds(10, 135, 132, 38);
-		if(menuframe.user.chucvu.contains("xuất")||menuframe.user.chucvu.contains("ADMIN"))
-		quanlyphieu.add(bxuat);
 		bxuat.setLayout(new GridLayout(1, 0, 0, 0));
 		JLabel bphieuxuat = new JLabel("Tạo phiếu xuất");
 		bphieuxuat.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -148,6 +156,8 @@ public class quanlyphieupanel extends JPanel {
 		        quanlyphieu.add(lblbackground);
 		        lblbackground.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		        lblbackground.setIcon(background);
+		        
+		        
 		
 	}
 }

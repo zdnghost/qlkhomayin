@@ -56,6 +56,7 @@ public class mayin extends sanpham{
     public String getTuongthich() {
         return tuongthich;
     }
+    //đưa dữ liệu thành đối tượng
     public void datatoobject(ResultSet a) throws SQLException
     {
         this.setMasp(a.getString("MASP"));
